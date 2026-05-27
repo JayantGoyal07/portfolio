@@ -1,0 +1,170 @@
+/* Save this as style.css next to index.html */
+
+/* Basic variables */
+:root{
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #5a6470;
+  --accent: #007bff;
+  --hero-bg: #eaf3ff;
+  --shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --radius: 12px;
+}
+
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+html,body{ height: 100%; }
+body{
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Utility container */
+.container{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header{
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-inner{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.logo{ font-size: 22px; font-weight: 700; }
+.logo-dot{ color: var(--accent); margin-left: 4px; }
+
+/* Nav */
+.primary-nav ul{
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+}
+.primary-nav a{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+.primary-nav a:hover,
+.primary-nav a:focus{ color: var(--accent); outline: none; }
+
+.nav-toggle{
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero{
+  background: var(--hero-bg);
+  padding: 48px 0;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+.hero-inner{
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+.hero-text{ flex: 1 1 360px; min-width: 260px; }
+.hero-text h2{
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+.accent{ color: var(--accent); }
+.lead{ font-size: 18px; color: #333; }
+
+/* Avatar */
+.hero-avatar{ flex: 0 0 240px; display:flex; justify-content:center; }
+
+/* Sections */
+.section{ padding: 48px 0; }
+.section-title{ font-size: 26px; margin-bottom: 16px; }
+
+/* Grid helpers */
+.grid{ display: grid; gap: 20px; }
+.skills-grid{ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.project-grid{ grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* Cards */
+.card{
+  background: var(--card);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card h4{ margin-bottom: 8px; }
+.card small{ color: var(--muted); display:block; margin-top: 8px; }
+
+/* Achievements list */
+.achievements-list{ margin-left: 1rem; line-height: 1.7; color: #333; }
+
+/* Contact section */
+.contact-section{ background: transparent; }
+.contact-section a{ color: var(--accent); text-decoration: none; }
+
+/* Footer */
+.site-footer{ padding: 18px 0; text-align: center; color: #6b7280; font-size: 14px; }
+
+/* Responsive: mobile nav */
+@media (max-width: 880px){
+  .nav-toggle{ display: inline-flex; align-items:center; gap:8px; }
+  .primary-nav{
+    position: absolute;
+    right: 20px;
+    top: 66px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transform-origin: top right;
+    transform: scale(0);
+    transition: transform 180ms ease;
+    overflow: hidden;
+    min-width: 200px;
+  }
+  .primary-nav.open{ transform: scale(1); }
+  .primary-nav ul{ flex-direction: column; gap: 0; padding: 8px 0; }
+  .primary-nav li{ width: 100%; }
+  .primary-nav a{ display: block; padding: 10px 16px; }
+}
+
+/* Smaller devices */
+@media (max-width: 600px){
+  .hero-text h2{ font-size: 28px; }
+  .hero-avatar{ flex-basis: 100%; margin-top: 12px; }
+  .hero-inner{ text-align: center; }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
+
+/* SR-only helper */
+.sr-only{
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
